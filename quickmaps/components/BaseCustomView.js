@@ -9,8 +9,10 @@
  * @providesModule TouchThroughScrollView
  * @flow
  */
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { View, requireNativeComponent } from 'react-native';
+
+import PropTypes from 'prop-types';
 
 export default class BaseCustomView extends Component {
 	render() {
@@ -19,6 +21,7 @@ export default class BaseCustomView extends Component {
 }
 
 BaseCustomView.propTypes = {
+	text: PropTypes.string,
 	...View.propTypes
 };
 

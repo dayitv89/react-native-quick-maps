@@ -13,7 +13,7 @@ export default class App extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<BaseCustomView style={styles.instructions} />
+				<BaseCustomView text="Hello World" ref={o => (this.base = o)} style={styles.instructions} />
 			</View>
 		);
 	}
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#00ffff',
+		backgroundColor: '#fff087',
 		padding: 20
 	},
 	welcome: {
@@ -33,9 +33,8 @@ const styles = StyleSheet.create({
 		margin: 10
 	},
 	instructions: {
-		backgroundColor: 'green',
 		marginBottom: 5,
-		height: 200,
-		width: 200
+		height: '100%',
+		width: '100%'
 	}
 });
