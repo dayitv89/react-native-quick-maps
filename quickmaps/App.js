@@ -7,13 +7,13 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 
-import BaseCustomView from './components/BaseCustomView';
+import QuickMapView from './components/QuickMapView';
 
 export default class App extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<BaseCustomView text="Hello World" ref={o => (this.base = o)} style={styles.instructions} />
+				<QuickMapView ref={o => (this.base = o)} style={styles.instructions} />
 			</View>
 		);
 	}
