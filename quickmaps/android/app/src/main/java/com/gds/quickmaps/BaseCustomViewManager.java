@@ -1,20 +1,14 @@
 package com.gds.quickmaps;
 
-import android.graphics.Color;
 import android.view.View;
 
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMapOptions;
-import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.MapsInitializer;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.LatLng;
 
-public class BaseCustomViewManager extends SimpleViewManager<MapView> {
+public class BaseCustomViewManager extends SimpleViewManager<QuickMapView> {
 
     public static final String REACT_CLASS = "R2RBaseCustomView";
 
@@ -26,27 +20,14 @@ public class BaseCustomViewManager extends SimpleViewManager<MapView> {
     }
 
     @Override
-    protected MapView createViewInstance(ThemedReactContext reactContext) {
-        final GoogleMapOptions googleMapOptions = new GoogleMapOptions().liteMode(true);
-        MapView  mapView = new MapView(reactContext, googleMapOptions);
-        mapView.setBackgroundColor(Color.BLUE);
-        MapsInitializer.initialize(reactContext.getCurrentActivity());
-        mapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(GoogleMap googleMap) {
-                gmap = googleMap;
-                gmap.setMapType(googleMapOptions.getMapType());
-                gmap.setMinZoomPreference(12);
-                LatLng ny = new LatLng(40.7143528, -74.0059731);
-                gmap.moveCamera(CameraUpdateFactory.newLatLng(ny));
-            }
-        });
-        return mapView;
+    protected QuickMapView createViewInstance(ThemedReactContext reactContext) {
+        GoogleMapOptions googleMapOptions = new GoogleMapOptions().mapType(GoogleMap.MAP_TYPE_NORMAL).liteMode(false);
+        return new QuickMapView(reactContext,reactContext.getCurrentActivity(),googleMapOptions);
 
     }
 
-    @ReactProp(name = "text")
-    public void setText(View view, String mText) {
-//        view.setText(mText);
+    @ReactProp(name = "myLocationEnable", defaultBoolean = false)
+    public void setMyLocationEnable(QuickMapView view, boolean isEnable) {
+        view.setMyLocationEnable(isEnable);
     }
 }
