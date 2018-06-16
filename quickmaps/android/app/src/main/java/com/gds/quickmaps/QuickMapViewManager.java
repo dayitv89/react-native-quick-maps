@@ -1,18 +1,14 @@
 package com.gds.quickmaps;
 
-import android.view.View;
-
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMapOptions;
 
-public class BaseCustomViewManager extends SimpleViewManager<QuickMapView> {
+public class QuickMapViewManager extends SimpleViewManager<QuickMapView> {
 
-    public static final String REACT_CLASS = "R2RBaseCustomView";
-
-    private GoogleMap gmap;
+    public static final String REACT_CLASS = "R2RQuickMapView";
 
     @Override
     public String getName() {

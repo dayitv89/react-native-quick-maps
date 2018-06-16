@@ -5,13 +5,13 @@ import PropTypes from 'prop-types';
 
 export default class QuickMapView extends Component {
 	render() {
-		return <R2RBaseCustomView {...this.props} />;
+		return <R2RQuickMapView {...this.props} />;
 	}
 }
 
-BaseCustomView.propTypes = {
+QuickMapView.propTypes = {
 	myLocationEnable: PropTypes.bool,
 	...View.propTypes
 };
 
-const R2RBaseCustomView = requireNativeComponent('R2RBaseCustomView', BaseCustomView);
+const R2RQuickMapView = requireNativeComponent('R2RQuickMapView', QuickMapView);

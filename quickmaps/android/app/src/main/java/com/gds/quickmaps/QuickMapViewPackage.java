@@ -1,7 +1,5 @@
 package com.gds.quickmaps;
 
-import android.app.Activity;
-
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -11,11 +9,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class BaseCustomViewPackage implements ReactPackage {
-    public BaseCustomViewPackage(Activity activity) {
-    }
+public class QuickMapViewPackage implements ReactPackage {
 
-    public BaseCustomViewPackage() {
+    public QuickMapViewPackage() {
     }
 
     @Override
@@ -25,8 +21,6 @@ public class BaseCustomViewPackage implements ReactPackage {
 
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-        BaseCustomViewManager baseCustomViewManager = new BaseCustomViewManager();
-
-        return Arrays.<ViewManager>asList(baseCustomViewManager);
+        return Arrays.<ViewManager>asList(new QuickMapViewManager());
     }
 }
